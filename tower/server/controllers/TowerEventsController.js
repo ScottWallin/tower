@@ -10,6 +10,7 @@ export class TowerEventsController extends BaseController {
     this.router
       .get('', this.findAllEvents)
       .get('/:eventId', this.findEventById)
+      .get('/:eventId/tickets', this.findAllTickets)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .put('/:eventId', this.editEvent)
       .post('', this.createEvent)
@@ -55,6 +56,14 @@ export class TowerEventsController extends BaseController {
     try {
       const event = await towerEventsService.cancelEvent(req.params.eventId, req.userInfo.id)
       return res.send(event)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async findAllTickets(req, res, next) {
+    try {
+      const allTickets = await towerEventsService.findAllTickets(req.params.eventId, req.params.ticketId)
+      res.send(allTickets)
     } catch (error) {
       next(error)
     }

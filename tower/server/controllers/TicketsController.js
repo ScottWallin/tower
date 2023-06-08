@@ -1,11 +1,13 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import BaseController from "../utils/BaseController.js";
 import { ticketsService } from "../services/TicketsService.js";
+import { towerEventsService } from "../services/TowerEventService.js";
 export class TicketsController extends BaseController {
   constructor() {
     super('api/tickets')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
+      // .get('/:albumId/tickets', this.findAllTickets)
       .post('', this.createTicket)
       .delete('/:ticketId', this.deleteTicket)
   }

@@ -42,5 +42,9 @@ class TowerEventsService {
     await event.save()
     return event
   }
+  async findAllTickets() {
+    const allTickets = await dbContext.Tickets.find()
+    return allTickets
+  }
 }
 export const towerEventsService = new TowerEventsService()
