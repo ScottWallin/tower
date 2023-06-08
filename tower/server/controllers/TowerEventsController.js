@@ -10,6 +10,7 @@ export class TowerEventsController extends BaseController {
     this.router
       .get('', this.findAllEvents)
       .get('/:eventId', this.findEventById)
+      .get('/:eventId/comments', this.findEventComments)
       .get('/:eventId/tickets', this.findAllTickets)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .put('/:eventId', this.editEvent)
@@ -62,8 +63,16 @@ export class TowerEventsController extends BaseController {
   }
   async findAllTickets(req, res, next) {
     try {
-      const allTickets = await towerEventsService.findAllTickets(req.params.eventId, req.params.ticketId)
+      const allTickets = await ticketsService.findAllTickets(req.params.eventId)
       res.send(allTickets)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async findEventComments(req, res, next) {
+    try {
+      const eventComments = await commentsService.findEventComments(req.params.eventId)
+      return res.send(eventComments)
     } catch (error) {
       next(error)
     }

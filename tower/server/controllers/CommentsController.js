@@ -7,6 +7,7 @@ export class CommentsController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createComment)
+      .delete('/:commentId', this.deleteComment)
   }
   async createComment(req, res, next) {
     try {
@@ -17,8 +18,12 @@ export class CommentsController extends BaseController {
       next(error)
     }
   }
+  async deleteComment(req, res, next) {
+    try {
+      const byeComment = await commentsService.deleteComment(req.params.commentId, req.userInfo.id)
+      return res.send(byeComment)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
-  //NOTE - create ticket
-  //NOTE - get MY tickets
-  //NOTE - get tickets for the event
-  //NOTE - delete tickets
