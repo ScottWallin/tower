@@ -5,8 +5,7 @@
   <main>
     <router-view />
   </main>
-   <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
+   <footer>
   </footer>
 </template>
 
@@ -26,15 +25,13 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
+body{
+  background-color: #001b2e
+}
 :root{
   --main-height: calc(100vh - 32px - 64px);
 }
 
 
-footer {
-  display: grid;
-  place-content: center;
-  height: 32px;
-}
+
 </style>
