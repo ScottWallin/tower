@@ -1,37 +1,32 @@
 <template>
   <div class="container-fluid">
     <section class="row" v-if="event">
-    <div class="col-md-4">
-      <div class="row">
+    <!-- <div class="col-md-4"> -->
+      <!-- <div class="row justify-content-evenly"> -->
         <div class="col-7">
-          <img src="event.creator.picture" alt="event.title" class="rounded event-creator">
+          <img :src="event.coverImg" :alt="event.name" class="img-fluid rounded">
         </div>
         <div class="col-5">
           <div class="bg-secondary rounded">
-            <p class="text-white">{{ event.title }}</p>
-            <p>created by {{ event.creator.name }}</p>
+            <img :src="event.creator?.picture" :alt="event.creator" class="rounded event-creator">
+            <p>created by {{ event.creator?.name }}</p>
+            <p class="text-white">{{ event.name }}</p>
+            <p class="text-white">{{ event.description }}</p>
           </div>
           <!-- //TODO - Come back to this to figure out button disabling.  -->
           <!-- <button v-if="{{event.capacity >= 1}}" class="rounded btn btn-">Attend Event<i class="mdi mdi-ticket-confirmation"></i></button> -->
           <button class="btn btn-danger" v-if="event.creatorId == user.id" @click="removeEvent()">Remove Event</button>
         </div>
-        <div class="col-6 text-white rounded">
+        <div class="col-6 text-white text-center rounded">
           <p>{{ event.ticketCount }}</p>
           <p>Event Attendees</p>
         </div>
         <div class="col-6">
-          <button v-if="!isAttendee" cla></button>
-                            <!-- <div class="col-6 pt-3 ">
-                            <button v-if="!isCollaborator" class="btn btn-info text-center white-shadow fs-5 text-white fw-bold"
-                                @click="createCollab()"><i class="mdi mdi-heart"></i>
-                                Collab</button>
-                            <button v-else class="btn btn-dark text-center white-shadow fs-5 text-white fw-bold"
-                                @click="removeCollab()"><i class="mdi mdi-heart-broken"></i>
-                                Uncollab</button>
-                        </div> -->
-        </div>
+          <!-- <button v-if="!isAttendee" cla></button> -->
+  
       </div>
-    </div>
+      <!-- </div> -->
+    <!-- </div> -->
   </section>
   </div>
 </template>
@@ -58,13 +53,13 @@ export default {
     }
     onMounted(()=> {
       getEventById()
-      getAttendeesByEventId()
-      getCommentsByEventId()
+      // getAttendeesByEventId()
+      // getCommentsByEventId()s
     })
     return {
       event: computed(() => AppState.activeEvent),
-      comments: computed(() AppState.comments),
-      attendees: computed(() Appstate.tickets),
+      comments: computed(() => AppState.comments),
+      attendees: computed(() => AppState.tickets),
       attendee: computed(() => AppState.tickets.find(a => a.accountId == AppState.user.id)),
       user: computed(() => AppState.user),
     }

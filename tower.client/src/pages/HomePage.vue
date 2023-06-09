@@ -30,9 +30,10 @@
 <script>
 import { onMounted, computed, ref } from "vue";
 import { eventsService } from "../services/EventsService.js";
-import { logger } from "../utils/Logger.js";
+// import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 import { AppState } from "../AppState.js";
+import { logger } from "../utils/Logger.js";
 
 export default {
     setup() {

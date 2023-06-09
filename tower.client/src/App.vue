@@ -5,8 +5,9 @@
   <main>
     <router-view />
   </main>
-   <footer>
-  </footer>
+<Modal id="createEvent">
+  <CreateEventForm />
+  </Modal>
 </template>
 
 <script>

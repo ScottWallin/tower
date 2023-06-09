@@ -1,7 +1,7 @@
 <template>
 
   <router-link :to="{name: 'EventDetails', params: {id: event.id}}">
-    <div class="rounded border border-4 border-dark event-card">
+    <div class="rounded border border-4 border-dark event-card m-2">
       <img :srcset="event.coverImg" alt="event.title" class="rounded-top">
       <div class="text-center rounded-bottom text-white">
         <h5 class="class"> {{event.name }} </h5>
