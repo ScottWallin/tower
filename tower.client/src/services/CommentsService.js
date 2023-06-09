@@ -6,7 +6,7 @@ import { api } from "./AxiosService.js";
 class CommentsService {
   async getCommentsByEventId(eventId) {
     AppState.comments = []
-    const res = await api.get(`api/events${eventId}/comments`)
+    const res = await api.get(`api/events/${eventId}/comments`)
     logger.log('getting comments for event', res.data)
     AppState.comments = res.data.map(c => new Comment(c))
   }

@@ -7,15 +7,17 @@
     <form @submit.prevent="createComment()">
     <div class="modal-body">
       <div class="form-floating">
-        <input type="text" class="form-control" id="commentBody" placeholder="Comment" v-model="editable.body">
+        <textarea type="text" class="form-control" id="commentBody" placeholder="Comment" v-model="editable.body"></textarea>
         <label for="commentBody">Comment</label>
       </div>
-      <div class="modal-footer"></div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary m-1">Comment</button>
+      </div>
     </div>
   </form>
   </div>
 </template>
-
+<textarea name="" id="" cols="30" rows="10"></textarea>
 <script>
 import { ref } from "vue";
 import { useRoute } from "vue-router";

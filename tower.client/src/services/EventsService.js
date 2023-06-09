@@ -22,6 +22,10 @@ async createEvent(formData){
   logger.log('creating event', res.data)
   return res.data
 }
+async removeEvent(eventId) {
+  const res = await api.remove(`api/events/${eventId}`)
+  logger.log(res.data)
+}
 }
 
 export const eventsService = new EventsService
