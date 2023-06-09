@@ -57,7 +57,7 @@ export default {
               if(filterBy.value == ""){
                 return AppState.events
               } else {
-                return AppState.events.filter(e => e.category == filterBy.value)
+                return AppState.events.filter(e => e.type == filterBy.value)
               }
             })
             

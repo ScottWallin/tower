@@ -4,6 +4,9 @@
     <img class="rounded" :src="account.picture" alt="" />
     <p>{{ account.email }}</p>
   </div>
+  <!-- FIXME draw my events here (events I have tickets to ) -->
+  <!-- FIXME refer to the 'my albums' section of the homepage on PostIt -->
+  <!-- FIXME handle the deletion of the tickets here.... -->
 </template>
 
 <script>

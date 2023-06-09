@@ -9,8 +9,10 @@ export const AppState = reactive({
   events: [],
   /** @type {import('./models/Event.js').Event|null} */
   activeEvent: null,
-  /** @type {import('./models/Event.js').Event} */
-  tickets: {},
+  /** @type {import('./models/Ticket.js').Ticket[]} */
+  tickets: [],
   /** @type {import('./models/Comment.js').Comment[]} */
   comments: [],
+
+  // FIXME have a collection for just MY tickets... tickets for the account
 })
