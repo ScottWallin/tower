@@ -36,13 +36,13 @@
             <div class="row text-white" v-for="c in comments" :key="c.id">
               <div class="card m-2">
                 <div class="d-flex">
-                  <img  class="pe-2" :src="c.creator?.picture" :alt="c.creator?.name">
+                  <img  class="pe-2 rounded mt-1" :src="c.creator?.picture" :alt="c.creator?.name">
                   <p>{{ c.creator.name }}</p>
                 </div>
                 <p>{{ c.body }}</p>
                 <div class="text-end">
                   <!-- FIXME delete comment here... think ab what value you may need to pass to remove a specific comment (c.id)-->
-                  <button class="btn btn-danger">Delete</button>
+                  <button class="btn btn-danger" @click="removeComment()">Delete</button>
                 </div>
               </div>
             </div>
@@ -101,7 +101,27 @@ export default {
 // FIXME write out deleteComment method...you can refer to Gregslist Vue here for the delete
 
 // FIXME finish removeEvent() method here....again refer to Postman/your server for what endpoint to hit.....reference the arcvhiveAlbum() method in PostIt
-
+      async removeEvent() {
+        try {
+          if(await Pop.confirm()){
+            await eventsService.removeEvent(route.params.id)
+          }
+        } catch (error) {
+          logger.log(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
+      async removeComment() {
+        try {
+          if (await Pop.confirm){
+            const comment = AppState.comments.find(c => c.accountId == AppState.account.id)
+            await commentsService.removeComment(comment.id)
+          }
+        } catch (error) {
+          logger.log(error)
+          Pop.toast(error.message, 'error')
+        }
+      }
     }
   }
 }

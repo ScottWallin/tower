@@ -2,7 +2,6 @@
   <div class="modal-content">
     <div class="modal-header">
       <h1 class="modal-title fs-5" id="newComment">Create Comment</h1>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <form @submit.prevent="createComment()">
     <div class="modal-body">
