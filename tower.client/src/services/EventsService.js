@@ -23,8 +23,9 @@ async createEvent(formData){
   return res.data
 }
 async removeEvent(eventId) {
-  const res = await api.remove(`api/events/${eventId}`)
-  logger.log(res.data)
+  const res = await api.delete(`api/events/${eventId}`)
+  logger.log('event removed', res.data)
+  
 }
 }
 

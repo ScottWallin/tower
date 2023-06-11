@@ -59,6 +59,7 @@ import { useRoute } from "vue-router";
 import { AppState } from "../AppState.js";
 import { eventsService } from '../services/EventsService.js'
 import { commentsService } from "../services/CommentsService.js";
+import { ticketsService } from "../services/TicketsService.js";
 
 export default {
   setup() {
@@ -86,7 +87,7 @@ export default {
 
     onMounted(()=> {
       getEventById()
-      // getAttendeesByEventId()
+      getTicketsByEventId()
       // FIXME call the get tickets by event id function here
       getCommentsByEventId()
     })
@@ -111,11 +112,10 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-      async removeComment() {
+      async removeComment(commentId) {
         try {
           if (await Pop.confirm){
-            const comment = AppState.comments.find(c => c.accountId == AppState.account.id)
-            await commentsService.removeComment(comment.id)
+            await commentsService.removeComment(commentId)
           }
         } catch (error) {
           logger.log(error)

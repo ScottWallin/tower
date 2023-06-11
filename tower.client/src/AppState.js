@@ -11,8 +11,11 @@ export const AppState = reactive({
   activeEvent: null,
   /** @type {import('./models/Ticket.js').Ticket[]} */
   tickets: [],
+  /** @type {import('./models/Ticket.js').Ticket[]} */
+  myTickets: [],      
   /** @type {import('./models/Comment.js').Comment[]} */
   comments: [],
+
 
   // FIXME have a collection for just MY tickets... tickets for the account
 })
