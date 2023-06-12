@@ -1,8 +1,10 @@
 import { dbContext } from "../db/DbContext.js";
 import { BadRequest, Forbidden } from "@bcwdev/auth0provider/lib/Errors.js";
+import { towerEventsService } from "./TowerEventService.js";
 
 class TicketsService {
   async createTicket(ticketsData) {
+    const event = await towerEventsService.findEventById(ticketsData.eventId)
     const tickets = await dbContext.Tickets.create(ticketsData)
     await tickets.populate('profile event')
     return tickets
@@ -18,8 +20,8 @@ class TicketsService {
     const allTickets = await dbContext.Tickets.find({ eventId: eventId }).populate('profile event')
     return allTickets
   }
-  async findMyTickets(userId) {
-    const myTickets = await dbContext.Tickets.find({ accountId: userId }).populate('event')
+  async findMyTickets(accountId) {
+    const myTickets = await dbContext.Tickets.find({ accountId }).populate('event')
     return myTickets
   }
 }
