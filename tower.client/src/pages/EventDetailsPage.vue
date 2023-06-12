@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-12 bg-secondary d-flex">
           <div v-for="t in tickets"  :key="t.id">
-            <img :src="t.account.picture" alt="ticket holder picture" class="img-fluid elevation-6 rounded-circle profile-picture m-3" :title="t.account.name">
+            <img :src="t.profile.picture" alt="ticket holder picture" class="img-fluid elevation-6 rounded-circle profile-picture m-3" :title="t.profile.name">
           </div>
         </div>
         <!-- <div class="col-md-6 text-white text-center rounded"> -->
@@ -59,7 +59,7 @@
                 <p>{{ c.body }}</p>
                 <div class="text-end">
                   <!-- FIXME delete comment here... think ab what value you may need to pass to remove a specific comment (c.id)-->
-                  <button class="btn btn-danger" @click="removeComment(commentId)">Delete</button>
+                  <button class="btn btn-danger" @click="removeComment(c.id)">Delete</button>
                 </div>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default {
       },
       async createTicket(){
         // debugger
-        const eventId = route.params.eventId
+        const eventId = route.params.id
         await ticketsService.createTicket(eventId)
       },
       computeDate(date) {

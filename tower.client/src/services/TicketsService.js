@@ -16,8 +16,9 @@ async getTicketsByEventId(eventId) {
   logger.log('Aaaaaall the tickets are here', res.data)
   AppState.tickets = res.data.map(t => new Ticket(t))
 }
-async createTicket(ticketId){
-  const res = await api.post('api/tickets', {ticketId})
+async createTicket(eventId){
+  logger.log(eventId)
+  const res = await api.post('api/tickets', {eventId})
   logger.log('creating ticket', res.data)
   AppState.activeEvent.capacity--
   AppState.tickets.push(new Ticket(res.data))
