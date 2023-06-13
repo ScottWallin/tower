@@ -29,6 +29,15 @@ export class ticketForEvent extends Ticket {
     super(data)
     this.title = data.title
     this.coverImg = data.event.coverImg
+    this.description = data.event.description
+    this.coverImg = data.event.coverImg
+    this.location = data.event.location
+    this.capacity = data.event.capacity
+    this.startDate = new Date(data.event.startDate)
+    this.type = data.event.type
+    this.isCanceled = data.event.isCanceled
+    this.creator = data.event.creator
+    this.ticketCount = data.event.ticketCount
   }
 
 }

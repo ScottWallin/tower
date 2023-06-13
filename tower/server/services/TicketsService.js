@@ -17,7 +17,7 @@ class TicketsService {
     return `ticket is destroyed`
   }
   async findAllTickets(eventId) {
-    const allTickets = await dbContext.Tickets.find({ eventId: eventId }).populate('profile event')
+    const allTickets = await dbContext.Tickets.find({ eventId: eventId }).populate('profile')
     return allTickets
   }
   async findMyTickets(accountId) {

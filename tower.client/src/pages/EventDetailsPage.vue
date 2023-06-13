@@ -107,7 +107,7 @@ export default {
     }
     async function getTicketsByEventId() {
       try {
-        await ticketsService.getTicketsByEventId(route.params.eventId)
+        await ticketsService.getTicketsByEventId(route.params.id)
       } catch (error) {
         logger.log(error)
         Pop.error(error.message)
